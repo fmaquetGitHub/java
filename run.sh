@@ -1,3 +1,3 @@
 #!/bin/bash
 
-java -classpath classes norsys.main.Main
+java -classpath classes:lib/calculatrice.jar norsys.main.Main

@@ -12,15 +12,15 @@ public class Main {
   System.out.println(helloWorld + calculatrice.somme(1, 1));
   
   // classLoader de la calculatrice
-  System.out.println("ClassLoader de calculatrice =" + calculatrice.getClass().getClassLoader());
+  System.out.println("ClassLoader de calculatrice -> " + calculatrice.getClass().getClassLoader());
   // -> sun.misc.Launcher$AppClassLoader
   
   // ClassLoader du classLoader de la calculatrice
-  System.out.println("ClassLoader du ClassLoader de calculatrice = " + calculatrice.getClass().getClassLoader().getClass().getClassLoader());    
+  System.out.println("ClassLoader du ClassLoader de calculatrice -> " + calculatrice.getClass().getClassLoader().getClass().getClassLoader());    
   // -> null
   
-  System.out.println("ClassLoader de helloWorld = " + helloWorld.getClass().getClassLoader());
-  // -> sun.misc.Launcher$AppClassLoader
+  System.out.println("ClassLoader de helloWorld -> " + helloWorld.getClass().getClassLoader());
+  // -> null
   
 
   
