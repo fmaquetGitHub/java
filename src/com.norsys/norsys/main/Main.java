@@ -1,13 +1,20 @@
 package norsys.main;
 
-import common.math.Calculatrice;
+import java.lang.NumberFormatException;
+
 
 public class Main {
 
  public static void main(String[] arguments) {
-   String helloWorld = new String("Hello World ! ");
-   Calculatrice calculatrice = new Calculatrice();
-   System.out.println(helloWorld + calculatrice.somme(1, 1));
+  try {
+   String s = "FOOBAR";
+   int i = Integer.parseInt(s);
+
+   // this line of code will never be reached
+   System.out.println("int value = " + i);
+  } catch (NumberFormatException nfe) {
+   nfe.printStackTrace();
+  }
  }
 
 }

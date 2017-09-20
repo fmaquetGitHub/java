@@ -1,4 +1,3 @@
-module org.common{
-  //  On supprime volontairement l'export
-  //  exports common.math;
+module org.common{ 
+  exports common.math;
 }
