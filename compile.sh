@@ -1,17 +1,8 @@
 #!/bin/bash
 
-# suppression de tout ce qu'il y a dans classes
+# suppression de tout ce qu'il y a dans modules
+rm -rf modules/org.common
+rm -rf modules/com.norsys
 
-
-# compilation de Calculatrice.java
-#javac src/common/math/Calculatrice.java -d classes
-
-# Creation du jar
-#rm -rf lib/*.jar
-#jar -cf lib/calculatrice-2.0.jar -C classes common
-
-# suppression de tout ce qu'il y a dans classes
-#rm -rf classes/*/
-
-# Compilation de Main.java
-javac -classpath lib/calculatrice-2.0.jar src/norsys/main/Main.java -d classes
+# Compilation de tous les modules
+javac --module-source-path src $(find src -name "*.java") -d modules
