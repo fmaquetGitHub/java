@@ -1,4 +1,4 @@
-package internal.math.test;
+package internal.math;
 
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
