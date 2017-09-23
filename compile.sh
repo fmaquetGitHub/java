@@ -1,31 +1,22 @@
 #!/bin/bash
 
 # suppression de tout ce qu'il y a dans modules
-rm -rf modules
-mkdir modules
+rm -rf modules/*
 
 
-#!/bin/bash
 
-# suppression de tout ce qu'il y a dans modules
-rm -rf modules/org.common
-rm -rf modules/com.norsys
-
-# Compilation de NumberFormatException 
-javac --patch-module java.base=src \
-      -d modules/java.base  	     \
-      src/java.base/java/lang/String.java 
+#compilation de Calculatrice
+echo "compilation de org.common"
+javac	 $(find src/org.common -name "*.java") \
+      -d modules/org.common	
       
-# Compilation de Calculatrice.java
-javac src/org.common/common/math/Calculatrice.java \
-	src/org.common/module-info.java 	     \
-	-d modules/org.common \
-	
-# Compilation de Main.java
-javac --module-path modules \
-      src/com.norsys/norsys/main/Main.java \
-	src/com.norsys/module-info.java      \
-	-d modules/com.norsys
-      
-      
-  
+
+#compilation des test
+echo "compilation des tests"
+
+#J'exporte org.common/internal.math pour org.common.test
+javac --module-path lib:modules						\
+	--add-exports org.common/internal.math=org.common.test      \
+      $(find src/org.common.test -name "*.java") 			\
+      -d modules/org.common.test	
+
