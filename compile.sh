@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# compilation de tous les modules
+rm -rf classes/*
 
-javac	--module-path lib \
-	--module-source-path src $(find src -name "*.java") -d modules
+javac src/main/*.java -d classes
+
