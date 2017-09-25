@@ -1,4 +1,4 @@
 #!/bin/bash
 
-java -classpath classes main.JAXBExample
+java --add-modules java.xml.bind -classpath classes main.JAXBExample
 

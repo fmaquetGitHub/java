@@ -2,5 +2,5 @@
 
 rm -rf classes/*
 
-javac src/main/*.java -d classes
+javac --add-modules java.xml.bind src/main/*.java -d classes
 
