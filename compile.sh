@@ -16,11 +16,11 @@ echo "compilation des tests"
 
 
 
-javac   -d target/test/exploded \
-        --module-path lib:target/main/artifact                \
-       --add-reads org.common=junit             \
-     --add-modules junit 		       \
-     --patch-module org.common=src/test/javac \
+javac -d target/test/exploded \
+      --module-path lib:target/main/artifact                \
+      --add-reads org.common=junit             \
+      --add-modules junit 		       \
+      --patch-module org.common=src/test/java \
       $(find src/test/java/ -name "*.java")    \
 
 
