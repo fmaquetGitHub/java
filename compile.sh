@@ -1,6 +1,32 @@
 #!/bin/bash
 
-rm -rf classes/*
+# suppression de tout ce qu'il y a dans modules
+rm -rf modules/*
+rm -rf target/*
 
-javac --add-modules java.xml.bind src/main/*.java -d classes
+
+#compilation de Calculatrice
+echo "compilation de org.common"
+javac  $(find src/main/java/ -name "*.java") \
+       -d target/main/artifact
+      
+
+#compilation des test
+echo "compilation des tests"
+
+
+
+javac   -d target/test/exploded \
+        --module-path lib:target/main/artifact                \
+       --add-reads org.common=junit             \
+     --add-modules junit 		       \
+     --patch-module org.common=src/test/javac \
+      $(find src/test/java/ -name "*.java")    \
+
+
+
+
+#	--add-exports org.common/internal.math=org.common.test      \
+#      $(find src/org.common.test -name "*.java") 			\
+#      -d modules/org.common.test	
 
