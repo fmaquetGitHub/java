@@ -2,11 +2,11 @@
 
 #Run Main
 echo "CalculatriceTest"
-java 	--module-path lib:target/main/artifact     \
+java 	--module-path lib:modules/main/org.common     \
 	--add-modules org.common      \
 	--add-reads org.common=junit  \
 	--add-exports org.common/common.math=junit  \
-	--patch-module org.common=target/test/exploded \
+	--patch-module org.common=modules/test/org.common.test \
 	-m junit/org.junit.runner.JUnitCore common.math.CalculatriceTest
 
 
