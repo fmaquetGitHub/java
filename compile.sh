@@ -2,12 +2,12 @@
 
 # suppression de tout ce qu'il y a dans modules
 rm -rf modules/*
-rm -rf target/*
+rm -rf target
 
 
 #compilation de Calculatrice
 echo "compilation de org.common"
-javac  $(find src/main/java/ -name "*.java") \
+javac  $(find src/main/ -name "*.java") \
        -d modules/main/org.common
       
 
@@ -16,16 +16,12 @@ echo "compilation des tests"
 
 
 
-javac --module-path lib:modules/main/org.common                \
-      --patch-module org.common=src/test/java \
-	--add-reads org.common=junit             \
+javac -d modules/test \
+      --module-path lib:modules/main/org.common                \
+      --add-reads org.common=junit             \
       --add-modules junit 		       \
-      $(find src/test/java/ -name "*.java")    \
-      -d modules/test/org.common.test 
+      --patch-module org.common=src/test \
+      $(find src/test/ -name "*.java")    \
 
-         
 
-#	--add-exports org.common/internal.math=org.common.test      \
-#      $(find src/org.common.test -name "*.java") 			\
-#      -d modules/org.common.test	
 
